@@ -38,7 +38,7 @@ jobs:
         mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
         mysql -e 'SHOW DATABASES;' -uroot -proot
         pwd
-        ls -a
+        echo '${GITHUB_WORKSPACE}'
         mysql -e 'use renren_fast;' -uroot -proot
         mysql -e 'show tables;' -uroot -proot
     - uses: actions/checkout@v3
