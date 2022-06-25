@@ -37,8 +37,6 @@ jobs:
     - name: Set up MySQL
       run: |
         sudo /etc/init.d/mysql start
-        pwd
-        ls
         mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
         mysql -e 'SHOW DATABASES;' -uroot -proot
         mysql -uroot -proot renren_fast < ./db/mysql.sql
@@ -53,11 +51,14 @@ jobs:
         #maven打包 测试 jar包命名为Package 放到staging目录下
     - name: maven打包 测试
       run: mvn --batch-mode --update-snapshots verify
+    - run: |
+        pwd
+        ls
     - run: mkdir staging && cp target/*.jar staging
     - uses: actions/upload-artifact@v3
-     with:
-       name: Package
-       path: staging
+      with:
+        name: Package
+        path: staging
 #  packeage:
 #    needs: build
 #    runs-on: ubuntu-latest
