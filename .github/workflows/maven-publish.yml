@@ -55,7 +55,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - run: mkdir staging && cp target/*.jar staging
+      - run: mkdir staging && cp ${GITHUB_WORKSPACE}/target/*.jar staging
       - uses: actions/upload-artifact@v3
         with:
           name: Package
