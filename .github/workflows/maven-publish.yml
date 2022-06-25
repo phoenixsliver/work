@@ -24,8 +24,8 @@ jobs:
         cache: maven
        #测试中不能有关于数据库的不然要配置在这里配置sql docker
         #maven打包 测试 jar包命名为Package 放到staging目录下
-      - name: maven打包 测试
-        run: mvn --batch-mode --update-snapshots verify
+    - name: maven打包 测试
+      run: mvn --batch-mode --update-snapshots verify
 
   packeage:
     needs: build
