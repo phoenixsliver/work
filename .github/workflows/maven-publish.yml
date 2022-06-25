@@ -37,9 +37,8 @@ jobs:
         sudo /etc/init.d/mysql start
         mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
         mysql -e 'SHOW DATABASES;' -uroot -proot
-        pwd
-        ls ../
-        mysql -uroot -proot renren_fast < ../../db/mysql.sql
+        chmod +x "${GITHUB_WORKSPACE}/.github/mysql.sql"
+        mysql -uroot -proot renren_fast < ${GITHUB_WORKSPACE}/.github/mysql.sql
         mysql -e 'use renren_fast;show tables;' -uroot -proot
     - uses: actions/checkout@v3
     - uses: actions/setup-java@v3
