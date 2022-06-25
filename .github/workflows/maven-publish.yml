@@ -22,16 +22,13 @@ jobs:
         java-version: '8'
         distribution: 'adopt'
         cache: maven
-  #测试中不能有关于数据库的不然要配置在这里配置sql docker
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      #maven打包 测试 jar包命名为Package 放到staging目录下
+       #测试中不能有关于数据库的不然要配置在这里配置sql docker
+        #maven打包 测试 jar包命名为Package 放到staging目录下
       - name: maven打包 测试
         run: mvn --batch-mode --update-snapshots verify
+
   packeage:
-    needs: test
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - run: mkdir staging && cp target/*.jar staging
