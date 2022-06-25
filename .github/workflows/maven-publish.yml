@@ -39,7 +39,6 @@ jobs:
         mysql -e 'SHOW DATABASES;' -uroot -proot
         pwd
         ls -a
-#        mysql -uroot -proot renren_fast < ../db/mysql.sql
         mysql -e 'use renren_fast;' -uroot -proot
         mysql -e 'show tables;' -uroot -proot
     - uses: actions/checkout@v3
