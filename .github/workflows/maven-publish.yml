@@ -15,16 +15,12 @@ jobs:
       contents: read
       packages: write
 
+    env:
+      DB_DATABASE: renren_fast
+      DB_USER: root
+      DB_PASSWORD: root
+
     services:
-      mysql:
-        image: mysql:5.7
-        ports:
-          - 3306:3306
-        env:
-          DB_DATABASE: renren_fast
-          DB_USER: renren
-          DB_PASSWORD: 123456
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
       # Label used to access the service container
       redis:
         # Docker Hub image
@@ -40,6 +36,7 @@ jobs:
       run: |
         sudo /etc/init.d/mysql start
         mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
+        mysql -e 'SHOW DATABASES;' -uroot -proot
     - uses: actions/checkout@v3
     - uses: actions/setup-java@v3
       with:
