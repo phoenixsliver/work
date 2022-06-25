@@ -102,18 +102,20 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql.version}</version>
 		</dependency>
+
+		 <!-- maven参考少下面2个包 用阿里云没问题暂时注释掉 -->
 		 <!--oracle驱动-->
-		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc6</artifactId>
-			<version>${oracle.version}</version>
-		</dependency>
+		<!--<dependency>-->
+		<!--	<groupId>com.oracle</groupId>-->
+		<!--	<artifactId>ojdbc6</artifactId>-->
+		<!--	<version>${oracle.version}</version>-->
+		<!--</dependency>-->
 		 <!--mssql驱动-->
-		<dependency>
-			<groupId>com.microsoft.sqlserver</groupId>
-			<artifactId>sqljdbc4</artifactId>
-			<version>${mssql.version}</version>
-		</dependency>
+		<!--<dependency>-->
+		<!--	<groupId>com.microsoft.sqlserver</groupId>-->
+		<!--	<artifactId>sqljdbc4</artifactId>-->
+		<!--	<version>${mssql.version}</version>-->
+		<!--</dependency>-->
 		 <!--postgresql驱动-->
 		<dependency>
 			<groupId>org.postgresql</groupId>
@@ -278,6 +280,7 @@
 						<command><![CDATA[netstat -nptl]]></command>
 						<command><![CDATA[ps -ef | grep java | grep -v grep]]></command>
 					</commands>
+					<!--  打包、上传文件、执行shell 命令 三者一起执行 -->
 					<!-- 运行命令 mvn clean package wagon:upload-single wagon:sshexec-->
 					<displayCommandOutputs>true</displayCommandOutputs>
 				</configuration>
@@ -311,28 +314,30 @@
 		</plugins>
 	</build>
 
-	<repositories>
-		<repository>
-			<id>public</id>
-			<name>aliyun nexus</name>
-			<url>https://maven.aliyun.com/repository/public/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>public</id>
-			<name>aliyun nexus</name>
-			<url>https://maven.aliyun.com/repository/public/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
+	<!-- 日本不需要用阿里云仓库了哈	-->
+	<!-- 残念 由于版权原因，ojdbc的依赖maven仓库中没有  还是用阿里的吧-->
+<!--	<repositories>-->
+<!--		<repository>-->
+<!--			<id>public</id>-->
+<!--			<name>aliyun nexus</name>-->
+<!--			<url>https://maven.aliyun.com/repository/public/</url>-->
+<!--			<releases>-->
+<!--				<enabled>true</enabled>-->
+<!--			</releases>-->
+<!--		</repository>-->
+<!--	</repositories>-->
+<!--	<pluginRepositories>-->
+<!--		<pluginRepository>-->
+<!--			<id>public</id>-->
+<!--			<name>aliyun nexus</name>-->
+<!--			<url>https://maven.aliyun.com/repository/public/</url>-->
+<!--			<releases>-->
+<!--				<enabled>true</enabled>-->
+<!--			</releases>-->
+<!--			<snapshots>-->
+<!--				<enabled>false</enabled>-->
+<!--			</snapshots>-->
+<!--		</pluginRepository>-->
+<!--	</pluginRepositories>-->
 
 </project>
