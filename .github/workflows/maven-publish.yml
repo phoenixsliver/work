@@ -57,7 +57,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          pwd
           ls
       - run: mkdir staging && cp target/*.jar staging
       - uses: actions/upload-artifact@v3
