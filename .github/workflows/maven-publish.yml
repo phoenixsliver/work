@@ -51,18 +51,20 @@ jobs:
         #maven打包 测试 jar包命名为Package 放到staging目录下
     - name: maven打包 测试
       run: mvn --batch-mode --update-snapshots verify
-
-  packeage:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          ls -a
-      - run: mkdir staging && cp target/*.jar staging
-      - uses: actions/upload-artifact@v3
-        with:
-          name: Package
-          path: staging
+    - run: mkdir staging && cp target/*.jar staging
+    - uses: actions/upload-artifact@v3
+      with:
+        name: Package
+        path: staging
+#  packeage:
+#    needs: build
+#    runs-on: ubuntu-latest
+#    steps:
+#      - run: mkdir staging && cp ${GITHUB_WORKSPACE}/target/*.jar staging
+#      - uses: actions/upload-artifact@v3
+#        with:
+#          name: Package
+#          path: staging
 #部署到测试服务器
 #      - name: Deploy to server
 #        uses: appleboy/scp-action@master
