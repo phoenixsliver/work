@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author Mark sunlightcs@gmail.com
  */
-@Service
+//@Service
 //@DataSource("slave1")
 public class DynamicDataSourceTestService {
     @Autowired

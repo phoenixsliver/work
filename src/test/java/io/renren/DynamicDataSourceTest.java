@@ -20,8 +20,8 @@ import org.springframework.test.context.junit4.SpringRunner;
  *
  * @author Mark sunlightcs@gmail.com
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
 public class DynamicDataSourceTest {
     @Autowired
     private DynamicDataSourceTestService dynamicDataSourceTestService;
