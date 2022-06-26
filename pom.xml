@@ -42,7 +42,7 @@
 		<hutool.version>4.1.1</hutool.version>
 		<lombok.version>1.18.4</lombok.version>
 
-		<!--wagon plugin 配置-->
+		<!--wagon plugin 配置  可能不用此插件上传 目前留着-->
 		<service-path>/work/renren</service-path>
 		<pack-name>${project.artifactId}-${project.version}.jar</pack-name>
 		<remote-addr>192.168.1.10:22</remote-addr>
@@ -71,10 +71,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
+
+		<!-- 用来提供Spring上下文的一些扩展模块，例如实现邮件服务、视图解析、缓存(定义了对下面几种缓存的支持：caffeine,ehcache,jcache)、定时任务调度等。-->
+		<!--没用过 待研究 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
@@ -93,6 +97,7 @@
 			<!--<artifactId>spring-boot-devtools</artifactId>-->
 			<!--<optional>true</optional>-->
 		<!--</dependency>-->
+
 		<dependency>
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-boot-starter</artifactId>
@@ -110,7 +115,7 @@
 			<version>${mysql.version}</version>
 		</dependency>
 
-		 <!-- maven参考少下面2个包 用阿里云没问题暂时注释掉 -->
+		 <!-- maven仓库少下面2个包 用阿里云没问题 暂时注释掉 -->
 		 <!--oracle驱动-->
 		<!--<dependency>-->
 		<!--	<groupId>com.oracle</groupId>-->
@@ -124,10 +129,10 @@
 		<!--	<version>${mssql.version}</version>-->
 		<!--</dependency>-->
 		 <!--postgresql驱动-->
-		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-		</dependency>
+		<!--<dependency>-->
+		<!--	<groupId>org.postgresql</groupId>-->
+		<!--	<artifactId>postgresql</artifactId>-->
+		<!--</dependency>-->
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid-spring-boot-starter</artifactId>
@@ -169,6 +174,8 @@
 			<artifactId>commons-configuration</artifactId>
 			<version>${commons.configuration.version}</version>
 		</dependency>
+
+		<!-- 权限 -->
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-core</artifactId>
@@ -184,11 +191,15 @@
 			<artifactId>jjwt</artifactId>
 			<version>${jwt.version}</version>
 		</dependency>
+
+		<!--验证码-->
 		<dependency>
 			<groupId>com.github.axet</groupId>
 			<artifactId>kaptcha</artifactId>
 			<version>${kaptcha.version}</version>
 		</dependency>
+
+		<!--swagger-->
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
@@ -199,16 +210,21 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>${swagger.version}</version>
 		</dependency>
+
+		<!--七牛-->
 		<dependency>
 			<groupId>com.qiniu</groupId>
 			<artifactId>qiniu-java-sdk</artifactId>
 			<version>${qiniu.version}</version>
 		</dependency>
+
+		<!-- oss使用阿里云的还是 aws的 或者直接都不用放服务器上 待定 暂时保留-->
 		<dependency>
 			<groupId>com.aliyun.oss</groupId>
 			<artifactId>aliyun-sdk-oss</artifactId>
 			<version>${aliyun.oss.version}</version>
 		</dependency>
+
 		<dependency>
 			<groupId>com.qcloud</groupId>
 			<artifactId>cos_api</artifactId>
@@ -247,6 +263,7 @@
 		</dependency>
 	</dependencies>
 
+	<!-- 下面build 为打包方面 暂时可以不用管 -->
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<extensions>
@@ -322,7 +339,7 @@
 	</build>
 
 	<!-- 日本不需要用阿里云仓库了哈	-->
-	<!-- 残念 由于版权原因，ojdbc的依赖maven仓库中没有  还是用阿里的吧-->
+	<!-- 由于版权原因，ojdbc的依赖maven仓库中没有 暂时还是留着以后u要用oracle的话还有用-->
 <!--	<repositories>-->
 <!--		<repository>-->
 <!--			<id>public</id>-->

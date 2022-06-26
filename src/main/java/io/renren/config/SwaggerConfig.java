@@ -25,6 +25,16 @@ import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
 
+/**
+ * 简单使用说明
+ * @Api注解用在类上，说明该类的作用 @Api(tags="用户管理")
+ * @ApiOperation注解用在方法上，说明该方法的作用 @ApiOperation("列表")
+ * @ApiParam注解用在方法参数  @ApiParam(value= "用户名", required = true)
+ * @ApiIgnore注解，可用于类、方法或参数上，表示生成Swagger接口文档时，忽略类、方法或参数。
+ *
+ * Swagger路径：http://localhost:8080/renren-fast/swagger/index.html
+ * Swagger注解路径：http://localhost:8080/renren-fast/swagger-ui.html
+ */
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig implements WebMvcConfigurer {

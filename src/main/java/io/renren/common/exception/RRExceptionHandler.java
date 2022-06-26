@@ -18,9 +18,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 /**
- * 异常处理器
+ * 全局异常处理器
  *
- * @author Mark sunlightcs@gmail.com
+ * @ControllerAdvice和@ExceptionHanlder组合拦截，不能拦截Filter中的异常
+ * @ControllerAdvice只是对Controller做了加强，而Filter在Controller之前进行不能处理filter中的异常（待研究）
  */
 @RestControllerAdvice
 public class RRExceptionHandler {

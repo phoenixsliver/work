@@ -30,6 +30,10 @@ public class RedisAspect {
     @Value("${spring.redis.open: false}")
     private boolean open;
 
+    /**
+     * 环绕通知(@Around)：动态代理，手动推进目标方法运行（joinPoint.procced()）
+     * 是否真的使用Redis
+     */
     @Around("execution(* io.renren.common.utils.RedisUtils.*(..))")
     public Object around(ProceedingJoinPoint point) throws Throwable {
         Object result = null;

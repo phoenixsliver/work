@@ -11,7 +11,7 @@ package io.renren.common.exception;
 /**
  * 自定义异常
  *
- * @author Mark sunlightcs@gmail.com
+ * 不能继承 Exception , Exception 必须手动捕获（try catch throw） 抛出异常才会回滚
  */
 public class RRException extends RuntimeException {
 	private static final long serialVersionUID = 1L;

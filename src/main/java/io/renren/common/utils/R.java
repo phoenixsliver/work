@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 返回数据
+ * 返回数据 Entity
  *
  * @author Mark sunlightcs@gmail.com
  */
