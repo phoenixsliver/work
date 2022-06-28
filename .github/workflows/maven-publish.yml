@@ -51,15 +51,25 @@ jobs:
     - name: maven打包 测试
       run: mvn --batch-mode --update-snapshots verify
 
-  packeage:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - run: mkdir staging && cp target/*.jar staging
-      - uses: actions/upload-artifact@v3
-        with:
-          name: Package
-          path: staging
+    - name: Send mail
+      if: always()
+      uses: dawidd6/action-send-mail@v3.6.1
+      with:
+      # mail server settings
+       server_address: smtp.gmail.com
+       server_port: 465
+      # user credentials
+       username: ${{ secrets.EMAIL_USERNAME }}
+       password: ${{ secrets.EMAIL_PASSWORD }}
+     # email subject
+       subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
+     # email body as text
+       body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
+     # comma-separated string, send email to
+       to: phoneixrever@gmail.com
+     # from email name
+       from: John Doe
+       
 #部署到测试服务器
 #      - name: Deploy to server
 #        uses: appleboy/scp-action@master
