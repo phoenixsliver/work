@@ -36,6 +36,7 @@ jobs:
     - name: Set up MySQL
       run: |
         sudo /etc/init.d/mysql start
+        echo ${{ secrets.EMAIL_USERNAME }}
         mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
         mysql -e 'SHOW DATABASES;' -uroot -proot
         mysql -uroot -proot renren_fast < ./db/mysql.sql
